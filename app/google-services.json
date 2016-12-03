@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "757126754079",
+    "firebase_url": "https://ftc-scouting-ad605.firebaseio.com",
+    "project_id": "ftc-scouting-ad605",
+    "storage_bucket": "ftc-scouting-ad605.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:757126754079:android:7b909089778c83d6",
+        "android_client_info": {
+          "package_name": "com.ftcscouting.kandarp.ftcscouting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "757126754079-ubamoo9qia27vakp5ms80rg13cukhs9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJvmUeGPPbz4kGcT6xa4ljs-H_XFQBt70"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
