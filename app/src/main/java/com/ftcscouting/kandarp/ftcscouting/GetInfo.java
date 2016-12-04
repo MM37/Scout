@@ -45,7 +45,7 @@ public class GetInfo extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.listViewList);
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, userNames);
         listView.setAdapter(adapter);
-        gRef = new Firebase("https://ftc-scouting-ad605.firebaseio.com/Information");
+        gRef = new Firebase("URL Here");
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, userNames);
         listView.setAdapter(arrayAdapter);
         gRef.addChildEventListener(new ChildEventListener() {

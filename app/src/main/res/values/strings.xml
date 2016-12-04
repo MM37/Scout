@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">FTC Scouting</string>
+    <string name="Park_Robot">Selelct Country</string>
+    <string-array name="park_options">
+
+        <item>Center</item>
+        <item>Corner</item>
+        <item>Does not park</item>
+    </string-array>
+
+    <string-array name="park_types">
+        <item>Partially</item>
+        <item>Fully</item>
+    </string-array>
 </resources>

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/teamInfo">
+    android:padding="5dp"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/teamInfo"
+    android:layout_height="650dp">
 
     <TextView
         android:text="Team Number"
@@ -63,9 +70,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/buttonBack"
         android:onClick="onBackClick"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView3" />
-
+        android:layout_alignParentTop="true" />
     <TextView
         android:text="Autonomous"
         android:layout_width="wrap_content"
@@ -73,49 +78,93 @@
         android:height="40dp"
         android:layout_centerInParent="false"
         android:textSize="18sp"
+        android:id="@+id/textView"
+        android:layout_marginTop="13dp"
         android:layout_below="@+id/addTeamNumber"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="12dp"
-        android:id="@+id/textView" />
-
-    <TextView
-        android:text="5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/pointCenterParkView"
-        android:height="40dp"
-        android:textSize="20sp"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@+id/addTeamNumber" />
+        android:layout_toEndOf="@+id/addTeamName" />
 
     <TextView
         android:text="Points"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:id="@+id/textView2"
         android:layout_alignBottom="@+id/textView"
-        android:layout_alignStart="@+id/pointCenterParkView" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="13dp"
+        android:id="@+id/textView5"
+        android:textSize="16sp" />
 
     <TextView
-        android:text="Robot parkes partially in center"
+        android:text="Claimed Beacon(s)"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
         android:id="@+id/textView6"
-        android:height="30dp"
-        android:textSize="18sp"
-        android:layout_alignBaseline="@+id/pointCenterParkView"
-        android:layout_alignBottom="@+id/pointCenterParkView"
-        android:layout_toStartOf="@+id/buttonSave" />
+        android:textSize="16sp"
+        android:layout_below="@+id/checkBox7"
+        android:layout_alignStart="@+id/addTeamNumber" />
 
     <CheckBox
+        android:text="Cap ball in contact with the floor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/aPartParkcheckBox"
-        android:layout_marginEnd="25dp"
+        android:id="@+id/checkBox7"
+        android:textSize="16sp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="159dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/aBeaconNumber"
+        android:textSize="16sp"
+        android:width="70dp"
+        android:hint="Number"
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
-        android:layout_alignParentEnd="true"
-        android:onClick="aPartParkCheckBoxClick" />
+        android:layout_alignEnd="@+id/checkBox7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView"
+        android:layout_alignStart="@+id/addTeamNumber"
+        android:id="@+id/parkRobotText"
+        android:text="Park Robot on"
+        android:textSize="18sp"
+        android:layout_toStartOf="@+id/textView"
+        android:layout_alignEnd="@+id/addTeamNumber" />
+
+    <TextView
+        android:text="Park Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/parkSpinnerMenu"
+        android:layout_alignStart="@+id/parkRobotText"
+        android:layout_marginTop="14dp"
+        android:id="@+id/parkTypeText"
+        android:textSize="18sp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/parkTypeText"
+        android:id="@+id/parkTypeMenu"
+        android:layout_alignEnd="@+id/parkSpinnerMenu"
+        android:layout_toEndOf="@+id/parkRobotText" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/parkSpinnerMenu"
+
+        android:layout_alignBottom="@+id/parkRobotText"
+        android:layout_alignStart="@+id/textView" />
+
 
 </RelativeLayout>
+
+</ScrollView>
+
