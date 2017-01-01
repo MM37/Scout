@@ -18,11 +18,11 @@ import com.firebase.client.Firebase;
 public class TeamInfo extends AppCompatActivity {
     Button btnBack, btnSave, btnViewInfo;
     CheckBox cb7;
-    EditText textTeamName, textTeamNumber, autoBeaconClaim;
+    EditText textTeamName, textTeamNumber;
     Firebase Ref;
-    String text1,text2, text7;
-    Spinner parkSpinner, parkTypeSpinner;
-    ArrayAdapter<CharSequence> parkAdapter, parkTypeAdapter;
+    String text1,text2, text3, text4, text5, text6, text7, text8, text9, text10, text11;
+    Spinner autoParkSpinner, autoParkTypeSpinner, autoParticleScoreSpinner, autoBeaconSpinner, teleOPParticleScoreSpinner, teleOPBeaconClaimedSpinner, teleOPCapBallSpinner;
+    ArrayAdapter<CharSequence> autoParkAdapterSpinner, autoParkTypeAdapter, autoParticleScoreAdapter, autoBeaconAdapter, teleOPParticleScoreAdapter, teleOPBeaconAdapter, teleOPCapBallAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,34 +35,138 @@ public class TeamInfo extends AppCompatActivity {
         btnViewInfo = (Button) findViewById(R.id.viewInfoButton);
         textTeamName = (EditText) findViewById(R.id.editTeamName);
         textTeamNumber = (EditText) findViewById(R.id.editTeamNumber);
-        autoBeaconClaim = (EditText) findViewById(R.id.aBeaconNumber);
+
 
         cb7 = (CheckBox) findViewById(R.id.checkBox7);
 
-        parkSpinner = (Spinner) findViewById(R.id.parkSpinnerMenu);
-        parkTypeSpinner = (Spinner) findViewById(R.id.parkTypeMenu);
-        parkAdapter = ArrayAdapter.createFromResource(this, R.array.park_options, android.R.layout.simple_spinner_item);
-        parkAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        parkTypeAdapter = ArrayAdapter.createFromResource(this, R.array.park_types, android.R.layout.simple_spinner_item);
-        parkTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        parkSpinner.setAdapter(parkAdapter);
-        parkTypeSpinner.setAdapter(parkTypeAdapter);
-        parkSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        autoParkSpinner = (Spinner) findViewById(R.id.parkSpinnerMenu);
+        autoParkTypeSpinner = (Spinner) findViewById(R.id.parkTypeMenu);
+        autoParticleScoreSpinner = (Spinner) findViewById(R.id.particleScoreSpinnerMenu);
+        autoBeaconSpinner = (Spinner) findViewById(R.id.autoBeaconSpinnerMenu);
+        teleOPBeaconClaimedSpinner = (Spinner) findViewById(R.id.teleOPBeaconMenu);
+        teleOPParticleScoreSpinner = (Spinner) findViewById(R.id.teleOPParticleSpinnerMenu);
+        teleOPCapBallSpinner = (Spinner) findViewById(R.id.teleOPCapBallSpinnerMenu);
+        
+        autoParkAdapterSpinner = ArrayAdapter.createFromResource(this, R.array.park_options, android.R.layout.simple_spinner_item);
+        autoParkAdapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        autoParkTypeAdapter = ArrayAdapter.createFromResource(this, R.array.park_types, android.R.layout.simple_spinner_item);
+        autoParkTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        autoParticleScoreAdapter = ArrayAdapter.createFromResource(this, R.array.particle_scoring, android.R.layout.simple_spinner_item);
+        autoParticleScoreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        autoBeaconAdapter = ArrayAdapter.createFromResource(this, R.array.beacon_claimed, android.R.layout.simple_spinner_item);
+        autoBeaconAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        teleOPParticleScoreAdapter = ArrayAdapter.createFromResource(this, R.array.teleopparticle_scoring, android.R.layout.simple_spinner_item);
+        teleOPParticleScoreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        teleOPBeaconAdapter = ArrayAdapter.createFromResource(this, R.array.teleopbeacon_claimed, android.R.layout.simple_spinner_item);
+        teleOPBeaconAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        teleOPCapBallAdapter = ArrayAdapter.createFromResource(this, R.array.cap_ball, android.R.layout.simple_spinner_item);
+        teleOPCapBallAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        autoParkSpinner.setAdapter(autoParkAdapterSpinner);
+        autoParkTypeSpinner.setAdapter(autoParkTypeAdapter);
+        autoParticleScoreSpinner.setAdapter(autoParticleScoreAdapter);
+        autoBeaconSpinner.setAdapter(autoBeaconAdapter);
+        teleOPBeaconClaimedSpinner.setAdapter(teleOPBeaconAdapter);
+        teleOPParticleScoreSpinner.setAdapter(teleOPParticleScoreAdapter);
+        teleOPCapBallSpinner.setAdapter(teleOPCapBallAdapter);
+        
+        autoParkSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                text1 = parent.getItemAtPosition(position).toString();          }
+                text1 = parent.getItemAtPosition(position).toString();
+                if(text1.equalsIgnoreCase("Cannot park"))
+                {
+                    autoParkTypeSpinner.getSelectedView().setEnabled(false);
+                    autoParkTypeSpinner.setEnabled(false);
+                    text2 = "Robot" + parent.getItemAtPosition(position).toString();
+                }
+            }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        parkTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        autoParkTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                text2 = parent.getItemAtPosition(position).toString();
+                text2 = "Autonomous/n Robot can be parked " + parent.getItemAtPosition(position).toString() + " on " + text1;
+                
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        autoParticleScoreSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+           @Override
+           public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+            text3 = "Particle can be scored in the " + parent.getItemAtPosition(position).toString() + " vortex";
+
+           }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+
+        });
+
+     autoBeaconSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+         @Override
+         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+             text4 = parent.getItemAtPosition(position).toString() + "Beacons can be claimed";
+         }
+
+         @Override
+         public void onNothingSelected(AdapterView<?> parent) {
+
+         }
+     });
+
+        teleOPParticleScoreSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                text5 = "Particle can be scored in" + parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        teleOPBeaconClaimedSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                text6 = parent.getItemAtPosition(position).toString() + "Beacons can be claimed";
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        teleOPCapBallSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                text8 = "Cap ball" + parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -76,18 +180,28 @@ public class TeamInfo extends AppCompatActivity {
             public void onClick(View v) {
                 String name = textTeamName.getText().toString();
                 String number = textTeamNumber.getText().toString();
-                String aBeaconNumb = "Numer of Beacon claimed = " + autoBeaconClaim.getText().toString();
+
 
                 if(cb7.isChecked()){
                     text7 = cb7.getText().toString();
                 }
 
+                text9 = "AUTONOMOUS";
+                text10 = "TELE OP";
+                text11 = "-------------------------------------------------------------------------------------";
                 Ref.push().setValue(number);
                 Ref.push().setValue(name);
-                Ref.push().setValue(text1);
+                Ref.push().setValue(text9);
                 Ref.push().setValue(text2);
+                Ref.push().setValue(text3);
                 Ref.push().setValue(text7);
-                Ref.push().setValue(aBeaconNumb);
+                Ref.push().setValue(text4);
+                Ref.push().setValue(text10);
+                Ref.push().setValue(text5);
+                Ref.push().setValue(text6);
+                Ref.push().setValue(text8);
+                Ref.push().setValue(text11);
+
             }
         });
 

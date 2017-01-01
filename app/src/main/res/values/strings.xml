@@ -1,15 +1,56 @@
 <resources>
     <string name="app_name">FTC Scouting</string>
-    <string name="Park_Robot">Selelct Country</string>
+    <string name="Park_Robot">Parking Options</string>
     <string-array name="park_options">
-
+        <item>  </item>
+        <item>Cannot park</item>
         <item>Center</item>
         <item>Corner</item>
-        <item>Does not park</item>
     </string-array>
 
     <string-array name="park_types">
+        <item>  </item>
         <item>Partially</item>
         <item>Fully</item>
+    </string-array>
+
+    <string-array name="particle_scoring">
+        <item>  </item>
+        <item>Cannot Score</item>
+        <item>Center</item>
+        <item>Corner</item>
+    </string-array>
+
+    <string-array name="beacon_claimed">
+        <item>  </item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="teleopparticle_scoring">
+        <item>  </item>
+        <item>Cannot Score</item>
+        <item>Center</item>
+        <item>Corner</item>
+    </string-array>
+
+    <string-array name="teleopbeacon_claimed">
+        <item>  </item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="cap_ball">
+        <item>  </item>
+        <item>cannot be raised</item>
+        <item>below 76cm(30 inches)</item>
+        <item>above 76cm(30 inches)</item>
+        <item>scored in center vortex goal</item>
     </string-array>
 </resources>
